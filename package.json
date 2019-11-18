@@ -1,7 +1,7 @@
 {
-  "name": "manga-server",
+  "name": "art-server",
   "version": "1.0.0",
-  "description": "Manga Review Server",
+  "description": "Art Server",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

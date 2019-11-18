@@ -10,11 +10,11 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 db.Sequelize = Sequelize
 db.sequelize = sequelize
     
-    db.mangas = require('./models/manga')(sequelize, Sequelize);
-    db.reviews = require('./models/review')(sequelize, Sequelize);
+    db.arts = require('./models/art')(sequelize, Sequelize);
+    db.comments = require('./models/comment')(sequelize, Sequelize);
 
-    db.mangas.hasMany(db.reviews);
-    db.reviews.belongsTo(db.mangas);
+    db.arts.hasMany(db.comments);
+    db.comments.belongsTo(db.arts);
 
 // manga has many reviews
 // reviews belong to manga 

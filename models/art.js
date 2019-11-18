@@ -1,36 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
-    const Review = sequelize.define('review', {
+    const Art = sequelize.define('art', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4,
             allowNull: false
         },
-        mangaId: {
-            type: DataTypes.UUID,
-            allowNull: false
-        },
-        reviewer: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        rating: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        mangaTitle: {
+        price: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        paragraph: {
+        img: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        owner: {
-            type: DataTypes.INTEGER,
+        genre: {
+            type: DataTypes.STRING,
             allowNull: false
         }
-        // Will need to be associated with MangaID on certain view 
     })
-    return Review;
+    return Art;
 }

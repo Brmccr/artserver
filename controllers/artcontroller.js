@@ -108,7 +108,7 @@ router.post('/commentpost', validateSession, function(req, res){
     const artCommentFromRequest = {
         paragraph: req.body.paragraph,
         owner: req.user.id,
-        artid: "dee9b323-549a-4334-97bb-08d0c29bdc4e"
+        art_id: "be765c66-61d5-4666-8ed2-3948cca2d756"
     }
 
     console.log(artCommentFromRequest)

@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: DataTypes.UUIDV4,
             allowNull: false
         },
-        artid: {
+        art_id: {
             type: DataTypes.UUID,
             allowNull: false
         },

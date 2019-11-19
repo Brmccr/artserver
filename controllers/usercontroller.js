@@ -4,9 +4,6 @@ let db = require('../db');
 let jwt = require('jsonwebtoken');
 let bcrypt = require('bcryptjs');
 // let User = db.import('../models/user');
-// const manga = require('../db').import('../models/manga');
-// const review = require('../db').import('../models/review');
-// let ReviewModel = sequelize.import('../models/review');
 let User = db.sequelize.import('../models/user');
 
 router.post('/register', function(req, res) {

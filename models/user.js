@@ -22,6 +22,10 @@ module.exports = function(sequelize, DataTypes) {
         lastname: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
-    });
+        },
+        updated_at:  DataTypes.DATE,
+          deleted_at: DataTypes.DATE
+        }, {
+          underscored: true
+        });
 };

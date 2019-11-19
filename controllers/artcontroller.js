@@ -18,14 +18,16 @@ router.get('/', function(req, res) {
     router.post('/artcreate', validateSession, function(req, res) {
         const artItem = {
             title: req.body.title,
+            artist: req.body.artist,
             price: req.body.price,
             img: req.body.img,
-            genre: req.body.genre
+            genre: req.body.genre,
+            description: req.body.description
         }
             console.log(artItem)
     
         db.arts.create(artItem)
-            .then(manga => res.status(200).json(manga))
+            .then(art => res.status(200).json(art))
             .catch(err => res.json(req.errors));
     })
 
@@ -33,7 +35,7 @@ router.get('/', function(req, res) {
     router.get('/artgenrephotography', (req, res) => {
         db.arts.findAll({
             where: {genre : "Photography"}
-        }).then(manga => res.status(200).json(manga))
+        }).then(art => res.status(200).json(art))
         .catch(err => res.status(500).json({
             error: err
         }))
@@ -42,7 +44,25 @@ router.get('/', function(req, res) {
     router.get('/artgenrepaintings', (req, res) => {
         db.arts.findAll({
             where: {genre : "Paintings"}
-        }).then(manga => res.status(200).json(manga))
+        }).then(art => res.status(200).json(art))
+        .catch(err => res.status(500).json({
+            error: err
+        }))
+    })
+
+    router.get('/artgenredigital', (req, res) => {
+        db.arts.findAll({
+            where: {genre : "Digital"}
+        }).then(art => res.status(200).json(art))
+        .catch(err => res.status(500).json({
+            error: err
+        }))
+    })
+
+    router.get('/artgenredrawing', (req, res) => {
+        db.arts.findAll({
+            where: {genre : "Drawing"}
+        }).then(art => res.status(200).json(art))
         .catch(err => res.status(500).json({
             error: err
         }))
@@ -51,7 +71,7 @@ router.get('/', function(req, res) {
     router.get('/artgetall', (req, res) => {
         db.arts.findAll({
             where: { model: db.arts}
-        }).then(manga => res.status(200).json(manga))
+        }).then(art => res.status(200).json(art))
         .catch(err => res.status(500).json({
             error: err
         }))

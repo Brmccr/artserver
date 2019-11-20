@@ -8,7 +8,7 @@ router.post('/commentpost', validateSession, function(req, res){
     const artCommentFromRequest = {
         paragraph: req.body.paragraph,
         owner: req.user.id,
-        art_id: "97dfe66d-ebf7-4c98-8202-736a4e23913d"
+        art_id: "40ae132d-8c48-46ff-aeb7-f1581dc4cd2e"
     }
 
     console.log(artCommentFromRequest)
@@ -73,5 +73,19 @@ router.post('/commentpost', validateSession, function(req, res){
             }
         );
     });
+
+    router.get('/commentsonart', (req, res) => {
+        db.arts.findAll({
+            where: {title : "Facing"},
+          include: [
+            {
+              model: db.comments,
+            }
+          ]
+        }).then(art => res.status(200).json(art))
+        .catch(err => res.status(500).json({
+            error: err
+        }))
+    })
 
     module.exports = router;

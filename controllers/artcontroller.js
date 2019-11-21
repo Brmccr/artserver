@@ -43,7 +43,7 @@ router.get('/', function(req, res) {
 
     router.get('/artgenrepaintings', (req, res) => {
         db.arts.findAll({
-            where: {genre : "Paintings"}
+            where: {genre : "Painting"}
         }).then(art => res.status(200).json(art))
         .catch(err => res.status(500).json({
             error: err

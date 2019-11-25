@@ -4,7 +4,9 @@ let db = require('../db');
 const validateSession = require('../middleware/validate-session');
 // let User = db.sequelize.import('../models/user');
 
-router.post('/commentpost', validateSession, function(req, res){
+
+
+router.post('/commentpost', validateSession, function(req, res){  
     const artCommentFromRequest = {
         paragraph: req.body.paragraph,
         owner: req.user.id,
@@ -30,9 +32,9 @@ router.post('/commentpost', validateSession, function(req, res){
             error: err
         }))
     })
+    // validateSession,
     
-    
-    router.delete('/:id', validateSession, (req, res) => { /// validateSession, to be added back in 
+    router.delete('/:id', (req, res) => { /// validateSession, to be added back in 
         db.comments.destroy({
             where: {
                 id: req.params.id

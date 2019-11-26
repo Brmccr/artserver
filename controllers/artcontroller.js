@@ -77,4 +77,45 @@ router.get('/', function(req, res) {
         }))
     })
 
+    // router.get('/:id', (req, res) => { // validateSession, 
+    //     db.arts.findOne({
+    //         where: {
+    //             id: req.params.id
+    //         }
+    //     })
+    //     .then(comment => res.status(200).json(comment))
+    //     .catch(err => res.json({
+    //         error: err
+    //     }))
+    // })
+
+    // router.get('/id', (req, res) => {
+    //     db.arts.findOne({
+    //         where: {
+    //             id: req.params.id},
+    //       include: [
+    //         {
+    //           model: db.comments,
+    //         }
+    //       ]
+    //     }).then(art => res.status(200).json(art))
+    //     .catch(err => res.status(500).json({
+    //         error: err
+    //     }))
+    // })
+
+    router.get('/:id', (req, res) => {
+        db.arts.findAll({
+            where: { id: req.params.id },
+          include: [
+            {
+              model: db.comments,
+            }
+          ]
+        }).then(art => res.status(200).json(art))
+        .catch(err => res.status(500).json({
+            error: err
+        }))
+    })
+
 module.exports = router;

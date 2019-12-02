@@ -8,15 +8,15 @@ let User = db.sequelize.import('../models/user');
 
 router.post('/register', function(req, res) {
 
-    let username = req.body.user.username;
-    let pass = req.body.user.password;
+    let username = req.body.username;
+    let pass = req.body.password;
 
     User.create({
         username: username,
         passwordhash: bcrypt.hashSync(pass, 10),
-        displayname: req.body.user.displayname,
-        firstname: req.body.user.firstname,
-        lastname: req.body.user.lastname
+        displayname: req.body.displayname,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname
 
     }).then(
         function createSuccess(user){
@@ -38,12 +38,12 @@ router.post('/register', function(req, res) {
 
 router.post('/login', function(req, res) {
 
-    User.findOne( { where: { username: req.body.user.username } } ).then(
+    User.findOne( { where: { username: req.body.username } } ).then(
 
         function(user){
             if (user) {
                 
-                bcrypt.compare(req.body.user.password, user.passwordhash, function(err, matches){
+                bcrypt.compare(req.body.password, user.passwordhash, function(err, matches){
                 
                     if(matches) {
                         let token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});

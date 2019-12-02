@@ -4,8 +4,12 @@
   "description": "Art Server",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
+    "ng":"ng",
+    "start": "ng serve --proxy-config proxyconfig.json",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
     "dev": "nodemon"
   },
   "author": "Brad McCracken",

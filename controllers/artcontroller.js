@@ -70,12 +70,38 @@ router.get('/', function(req, res) {
 
     router.get('/artgetall', (req, res) => {
         db.arts.findAll({
-            where: { model: db.arts}
         }).then(art => res.status(200).json(art))
         .catch(err => res.status(500).json({
             error: err
         }))
     })
+
+    router.put('/:id', validateSession, (req, res) => {
+        db.arts.update(req.body.art, {
+             where: {
+              id: req.params.id
+            }
+         })
+         .then(art => res.json(
+             {art: art}
+         ))
+         .catch(err => res.json({
+              error: err
+           }))
+           console.log(req);
+     })
+
+    //  router.put('/:id', validateSession, (req, res) => { // validateSession, 
+    //     db.comments.update(req.body, {
+    //         where: {
+    //             id: req.params.id
+    //         }
+    //     })
+    //     .then(comment => res.status(200).json(comment))
+    //     .catch(err => res.json({
+    //         error: err
+    //     }))
+    // })
 
     // router.get('/:id', (req, res) => { // validateSession, 
     //     db.arts.findOne({
@@ -117,5 +143,17 @@ router.get('/', function(req, res) {
             error: err
         }))
     })
+    
+    router.delete('/:id', validateSession, (req, res) => {
+        db.arts.destroy( {
+            where: {
+                id: req.params.id
+            }
+    })
+    .then(art => res.status(200).json(art))
+    .catch(err => res.json({
+        error: err
+    }))
+})
 
 module.exports = router;

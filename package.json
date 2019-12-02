@@ -4,8 +4,8 @@
   "description": "Art Server",
   "main": "app.js",
   "scripts": {
-    "ng":"ng",
-    "start": "ng serve --proxy-config proxyconfig.json",
+    "ng": "ng",
+    "start": "node app.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",

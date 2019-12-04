@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        artist: {
+            type: DataTypes.STRING,
+            allowNull:false
+        },
         price: {
             type: DataTypes.STRING,
             allowNull: false
@@ -21,7 +25,20 @@ module.exports = (sequelize, DataTypes) => {
         genre: {
             type: DataTypes.STRING,
             allowNull: false
-        }
-    })
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        created_at: {
+            type: DataTypes.DATE,
+            allowNull: false
+          },
+          updated_at:  DataTypes.DATE,
+          deleted_at: DataTypes.DATE
+        }, {
+          underscored: true
+        });
+    
     return Art;
 }

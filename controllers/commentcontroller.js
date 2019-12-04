@@ -4,8 +4,6 @@ let db = require('../db');
 const validateSession = require('../middleware/validate-session');
 // let User = db.sequelize.import('../models/user');
 
-
-
 router.post('/commentpost', validateSession, function(req, res){  
     const artCommentFromRequest = {
         paragraph: req.body.paragraph,

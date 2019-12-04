@@ -8,7 +8,6 @@ const validateSession = require('../middleware/validate-session');
 let User = db.sequelize.import('../models/user');
 
 
-
 router.get('/', function(req, res) {
     res.send('Hey!! This is a test route!');
 })
@@ -155,5 +154,6 @@ router.get('/', function(req, res) {
         error: err
     }))
 })
+
 
 module.exports = router;

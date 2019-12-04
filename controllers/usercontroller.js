@@ -17,7 +17,7 @@ router.post('/register', function(req, res) {
         displayname: req.body.displayname,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        role: 'user'
+        role: req.body.role
 
     }).then(
         function createSuccess(user){

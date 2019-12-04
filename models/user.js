@@ -23,6 +23,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        role: {
+            type: DataTypes.ENUM,
+            values: ['user', 'admin']
+        },
         updated_at:  DataTypes.DATE,
           deleted_at: DataTypes.DATE
         }, {

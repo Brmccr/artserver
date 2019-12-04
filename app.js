@@ -9,7 +9,7 @@ let db = require('./db');
 
 app.use(express.json());
 
-db.sequelize.sync({force:true});
+db.sequelize.sync();
 app.use(require('./middleware/headers'));
 
 app.use('/art', art)

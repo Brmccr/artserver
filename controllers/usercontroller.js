@@ -16,7 +16,8 @@ router.post('/register', function(req, res) {
         passwordhash: bcrypt.hashSync(pass, 10),
         displayname: req.body.displayname,
         firstname: req.body.firstname,
-        lastname: req.body.lastname
+        lastname: req.body.lastname,
+        role: 'user'
 
     }).then(
         function createSuccess(user){
